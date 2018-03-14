@@ -1,2 +1,2 @@
 import '/imports/startup/server'
-import '/imports/api/user/methods.js'
+import '/imports/api/user/server/methods.js'

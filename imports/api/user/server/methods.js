@@ -15,7 +15,7 @@ Meteor.methods({
 		Accounts.createUser({
 	        email: data.email,
 	        password: data.password
-    });
+    	});
 	}
 
 });
