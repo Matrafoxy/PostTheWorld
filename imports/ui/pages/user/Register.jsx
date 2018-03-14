@@ -1,6 +1,8 @@
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
+import TextField from 'uniforms-semantic/TextField'; 
+import SubmitField from 'uniforms-semantic/SubmitField';
 
 import React from 'react';
 
@@ -34,12 +36,22 @@ class Register extends React.Component {
 		        model={model}
 		    />
 		);
+
+		const PostForm = ({model}) =>
+	    <AutoForm schema={RegisterSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
+	        <h2>Register</h2>
+
+	        <TextField name="email" type="email" label="Email" />
+	        <TextField name="password" type="password" label="Password" />
+	        <TextField name="confirmPassword" type="password" label="Confirm" />
+
+	        <div className="super-special-class">
+	            <SubmitField className="super-special-class-with-suffix" />
+	        </div>
+	    </AutoForm>
 		return(
 			<div>
-			<SimpleForm
-				schema={RegisterSchema}
-				onSubmit={this.onSubmit.bind(this)}
-			/>
+			<PostForm />
 			</div>
 		);
 
