@@ -1,2 +1,3 @@
-import '/imports/startup/server'
-import '/imports/api/user/server/methods.js'
+import '/imports/startup/server';
+
+//import '/imports/api/posts/hooks.js';

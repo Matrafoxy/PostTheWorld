@@ -44,7 +44,7 @@ class Register extends React.Component {
 		    />
 		);
 
-		const PostForm = ({model}) =>
+		const RegisterForm = ({model}) =>
 	    <AutoForm schema={RegisterSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
 	        <h2>Register</h2>
 
@@ -58,7 +58,7 @@ class Register extends React.Component {
 	    </AutoForm>
 		return(
 			<div>
-			<PostForm />
+			<RegisterForm />
 			</div>
 		);
 

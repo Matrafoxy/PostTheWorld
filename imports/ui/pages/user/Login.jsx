@@ -20,13 +20,13 @@ class Login extends React.Component {
 				if(err)
 					Meteor.Error("Login error", err);
 				else
-					route.go('/posts/list');
+					route.go('/post/list');
 
 			});
 	}
 
 	render(){
-			const PostForm = ({model}) =>
+			const LoginForm = ({model}) =>
 	    <AutoForm schema={LoginSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
 	        <h2>Login</h2>
 
@@ -39,7 +39,7 @@ class Login extends React.Component {
 	    </AutoForm>
 	    return(
 			<div>
-			<PostForm />
+			<LoginForm />
 			</div>
 		);
 
