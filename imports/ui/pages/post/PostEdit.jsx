@@ -29,8 +29,8 @@ class PostEdit extends React.Component {
 		Meteor.call('post.get', this.props._id, (err, result) => {
 			if(err)
 				console.log(err);
-		
-		this.setState({post: result});
+			else
+				this.setState({post: result});
 		});
 
 	}
@@ -39,6 +39,8 @@ class PostEdit extends React.Component {
 		Meteor.call('post.edit',this.props._id, data, function(err){
 			if(err)
 				console.log(err);
+			else
+				console.log('Edit successfull');
 		});
 	}
 
