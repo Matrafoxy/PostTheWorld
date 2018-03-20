@@ -5,7 +5,9 @@ import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 
 import React from 'react';
+import { Button, Grid } from 'semantic-ui-react'
 
+import { Link } from 'react-router-dom';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -15,6 +17,9 @@ import Posts from '/imports/api/posts/colection.js'
 
 class PostList extends React.Component {
 	
+	editPost(id){
+		route.go('/post/edit/:_id', {_id: id});
+	}
 
 	render(){
 		const {loading, posts} = this.props;
@@ -24,12 +29,16 @@ class PostList extends React.Component {
        // }
 
         return(
-        	 <div>
+        	 <div >
                 {
                     posts.map(post => {
-                        return <div key={post._id}>
-                        	<h5>{post.title}</h5>
-                        	<h6>{post.description}</h6>
+                      
+	                        return <div key={post._id} style={{border: '3px solid', widith: '50%'}}>
+	                        	<h3>{post.title}</h3>
+	                        	<p>{post.description}</p>
+	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.editPost.bind(this, post._id)}> Edit </Button> : '' } 
+	                        		
+                        
                         </div>
                     })
                 }

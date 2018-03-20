@@ -16,6 +16,14 @@ export default new SimpleSchema({
 		 	}
     	}
   },
+  updatedAt: {
+  	type: Date,
+  	autoValue: function(){
+  		if(  this.isUpdate || this.isInsert) {
+  			return new Date;
+  		}
+  	}
+  },
 	userId: {
         type: String,
         autoValue: function(){ return Meteor.userId(); }
