@@ -15,6 +15,9 @@ import route from '/imports/routing/router.js';
 
 import Posts from '/imports/api/posts/colection.js'
 
+import CommentView from '../comment/CommentView.jsx';
+
+
 class PostList extends React.Component {
 	
 	editPost(_id){
@@ -48,6 +51,7 @@ class PostList extends React.Component {
 	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.editPost.bind(this, post._id)}> Edit </Button> : '' } 
 	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.deletePost.bind(this, post._id)}> Delete </Button> : '' }
 	                        	</div>
+	                        	<CommentView postId={post._id} />
                         
                         </div>
                     })
