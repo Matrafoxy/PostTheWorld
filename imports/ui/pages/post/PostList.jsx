@@ -5,7 +5,7 @@ import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 
 import React from 'react';
-import { Button, Grid } from 'semantic-ui-react'
+import { Button, Grid, Container, Segment, Divider,List } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ import { Meteor } from 'meteor/meteor';
 
 import route from '/imports/routing/router.js';
 
-import Posts from '/imports/api/posts/colection.js'
+import Posts from '/imports/api/posts/collection.js'
 
 import CommentView from '../comment/CommentView.jsx';
 
@@ -40,23 +40,28 @@ class PostList extends React.Component {
         }
 
         return(
-        	 <div >
+        	 <Grid centered>
+        	 <Grid.Column textAlign={'center'} width={10}>
                 {
                     posts.map(post => {
                       
-	                        return <div key={post._id} style={{border: '3px solid', widith: '50%'}}>
+	                        return <List key={post._id} >
 	                        	<h3>{post.title}</h3>
 	                        	<p>{post.description}</p>
-	                        	<div>
+	                        	
 	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.editPost.bind(this, post._id)}> Edit </Button> : '' } 
 	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.deletePost.bind(this, post._id)}> Delete </Button> : '' }
-	                        	</div>
+	                        	
+	                        	
 	                        	<CommentView postId={post._id} />
-                        
-                        </div>
+	                        	<Divider horizontal >.</Divider>
+	                        	
+                        </List>
                     })
+
                 }
-            </div>
+            </Grid.Column>
+        </Grid>
         );
 
 	}

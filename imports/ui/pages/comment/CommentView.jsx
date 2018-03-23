@@ -7,7 +7,7 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 
 
 import React from 'react';
-import { Button, Grid } from 'semantic-ui-react'
+import { Button, Grid, List, Segment, Divider } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom';
 
@@ -104,15 +104,19 @@ class CommentView extends React.Component {
 			
                     this.state.comments.map(comment => {
                       
-	                        return <div key={comment._id} style={{border: '3px blue', widith: '50%'}}>
-	            
-	                        	<p>{comment.text}</p>
-	                        	<p>{moment(comment.createdAt).format('DD-MM-YYYY')}</p>
-	                        	<div>
+	                        return <List key={comment._id}>
+	                        		<List.Item>
+	                        			<p>{comment.text}</p>
+	                        		</List.Item>
+	                        		<List.Item floated='right'>
+	                        			<p>{moment(comment.createdAt).format('DD-MM-YYYY')}</p>
+	                        		</List.Item>	
+	                        	</List>
+	                        	
 	                        	{ Meteor.userId() === comment.userId ?<Button onClick={this.deleteComment.bind(this, comment._id)}> Delete </Button> : '' }
-	                        	</div>
+	                        	
                         
-                                 </div>
+                                 
                     })
                 }</div> : ''}
 				</div>
