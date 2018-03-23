@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Accounts } from 'meteor/accounts-base';
 
-import Posts from '../colection';
+import Posts from '../collection';
 
 Meteor.methods({
 	'post.create'(post){

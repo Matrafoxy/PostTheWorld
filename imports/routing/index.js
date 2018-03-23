@@ -7,7 +7,7 @@ import PostCreate from '/imports/ui/pages/post/PostCreate';
 import PostList from '/imports/ui/pages/post/PostList';
 import PostEdit from '/imports/ui/pages/post/PostEdit';
 
-
+route('/', PostList);
 route('/register', Register);
 route('/login', Login);
 route('/post', PostCreate);
