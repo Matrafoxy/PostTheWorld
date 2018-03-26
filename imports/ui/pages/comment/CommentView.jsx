@@ -37,7 +37,7 @@ class CommentView extends React.Component {
 				console.log('err: ' + err);
 			else
 			{
-				console.log(results);
+				//console.log(results);
 				this.setState({comments: results});
 			}
 		});
@@ -55,7 +55,7 @@ class CommentView extends React.Component {
 
 	onSubmit(data){
 		data.postId = this.props.postId;
-		console.log(this.props.postId);
+		//console.log(this.props.postId);
 		Meteor.call('comment.add', data, function(err){
 			if(err)
 				console.log(err);

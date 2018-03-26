@@ -1,5 +1,6 @@
 // file: /imports/ui/App.jsx
 import React from 'react';
+import NavBar from '/imports/ui/pages/menu/NavBar';
 
 export default ({main, routeProps}) => {
     // main represents the component to render passed from the router
@@ -8,6 +9,7 @@ export default ({main, routeProps}) => {
     // where we do createElement, that's where your components will get rendered.
     return (
         <div id="app">
+        	<NavBar />
             {React.createElement(main, routeProps)}
         </div>
     )
