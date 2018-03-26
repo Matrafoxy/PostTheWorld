@@ -33,16 +33,37 @@ class NavBar extends React.Component{
 
 		return(
 			<Menu inverted>
-			 <Menu.Item name={ NavMenuEnum.HOME } active={ activeItem === NavMenuEnum.HOME } onClick={this.handleItemClick} />
-	        <Menu.Item name={ NavMenuEnum.POSTS } active={ activeItem === NavMenuEnum.POSTS } onClick={this.handleItemClick} />
+			 <Menu.Item
+			 	 name={ NavMenuEnum.HOME } 
+			 	 active={ activeItem === NavMenuEnum.HOME } 
+			 	 onClick={this.handleItemClick} 
+			 	 />
+	       
+	        <Menu.Item 
+	        	name={ NavMenuEnum.POSTS } 
+	        	active={ activeItem === NavMenuEnum.POSTS } 
+	        	onClick={this.handleItemClick} 
+	        	/>
+
 	        { !Meteor.userId() ?
 	           <Menu.Item
 	           		name={ NavMenuEnum.LOGIN } 
 	           		active={ activeItem === NavMenuEnum.LOGIN } 
 	           		onClick={this.handleItemClick} />
 	        :
+
 	        <Menu.Menu position='right'>
-	          <Menu.Item name={ NavMenuEnum.LOGOUT }  active={ activeItem ===  NavMenuEnum.LOGIN } onClick={this.handleItemClick} />
+	          <Menu.Item 
+	          	name={ NavMenuEnum.NEWPOST }  
+	          	active={ activeItem ===  NavMenuEnum.NEWPOST } 
+	          	onClick={this.handleItemClick} 
+	          	/>
+	          
+	          <Menu.Item 
+	          	name={ NavMenuEnum.LOGOUT }  
+	          	active={ activeItem ===  NavMenuEnum.LOGIN } 
+	          	onClick={this.handleItemClick} 
+	          	/>
 	        </Menu.Menu>
 	        }
 	      </Menu>
