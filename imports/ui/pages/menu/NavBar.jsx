@@ -20,9 +20,9 @@ class NavBar extends React.Component{
 	}
 	
 	handleItemClick = (e, {name}) => {
-			console.log('blldsldalsda');
+			
 			this.setState({ activeItem: name });
-			console.log(name);
+			
 			route.go(NavMenuRoutes[name]);
 	}
 

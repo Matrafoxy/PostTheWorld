@@ -13,6 +13,10 @@ import SimpleSchema from 'simpl-schema';
 
 import { Button, Grid } from 'semantic-ui-react'
 
+import route from '/imports/routing/router.js';
+
+import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+
 
 class PostEdit extends React.Component {
 	constructor(props){
@@ -39,8 +43,10 @@ class PostEdit extends React.Component {
 		Meteor.call('post.edit',this.props._id, data, function(err){
 			if(err)
 				console.log(err);
-			else
+			else{
 				console.log('Edit successfull');
+				route.go(NavMenuRoutes[NavMenuEnum.POSTS]);
+				}
 		});
 	}
 

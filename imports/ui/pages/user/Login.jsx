@@ -12,6 +12,8 @@ import { Meteor } from 'meteor/meteor';
 
 import route from '/imports/routing/router.js';
 
+import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+
 
 class Login extends React.Component {
 
@@ -19,8 +21,10 @@ class Login extends React.Component {
 		Meteor.loginWithPassword(data.email, data.password, function(err){
 				if(err)
 					Meteor.Error("Login error", err);
-				else
-					route.go('/post/list');
+				else{
+					console.log('Login succesfull');
+					route.go(NavMenuRoutes[NavMenuEnum.POSTS]);
+				}
 
 			});
 	}

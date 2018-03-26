@@ -11,6 +11,10 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 
 import SimpleSchema from 'simpl-schema';
 
+import route from '/imports/routing/router.js';
+
+import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+
 
 class PostCreate extends React.Component {
 	
@@ -18,8 +22,10 @@ class PostCreate extends React.Component {
 		Meteor.call('post.create', data, function(err){
 			if(err)
 				console.log(err);
-			else
-				console.log("Post succesfull")
+			else{
+				console.log("Post succesfull");
+				route.go(NavMenuRoutes[NavMenuEnum.POSTS]);
+				}
 		});
 	}
 
