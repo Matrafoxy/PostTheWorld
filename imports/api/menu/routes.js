@@ -2,16 +2,20 @@
 const NavMenuEnum  = {
 	HOME: 'home',
 	POSTS: 'posts',
-	LOGIN: 'login'
+	LOGIN: 'login',
+	LOGOUT: 'logout'
 }
 
 const NavMenuRoutes = {
 	[NavMenuEnum.HOME]: '/',
 	[NavMenuEnum.POSTS]: '/post/list',
-	[NavMenuEnum.LOGIN]: '/login'
+	[NavMenuEnum.LOGIN]: '/login',
+	[NavMenuEnum.LOGOUT]: '/logout'
+
 }
 
 export {
 	NavMenuEnum,
 	NavMenuRoutes
 }
+
