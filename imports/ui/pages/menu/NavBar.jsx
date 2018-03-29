@@ -19,7 +19,7 @@ class NavBar extends React.Component{
 		}
 	}
 	
-	handleItemClick = (e, {name}) => {
+	handleItemClick(name){
 			
 			this.setState({ activeItem: name });
 			
@@ -36,33 +36,33 @@ class NavBar extends React.Component{
 			 <Menu.Item
 			 	 name={ NavMenuEnum.HOME } 
 			 	 active={ activeItem === NavMenuEnum.HOME } 
-			 	 onClick={this.handleItemClick} 
+			 	 onClick={() => this.handleItemClick(NavMenuEnum.HOME)} 
 			 	 />
 	       
 	        <Menu.Item 
 	        	name={ NavMenuEnum.POSTS } 
 	        	active={ activeItem === NavMenuEnum.POSTS } 
-	        	onClick={this.handleItemClick} 
+	        	onClick={() => this.handleItemClick(NavMenuEnum.POSTS)} 
 	        	/>
 
 	        { !Meteor.userId() ?
 	           <Menu.Item
 	           		name={ NavMenuEnum.LOGIN } 
 	           		active={ activeItem === NavMenuEnum.LOGIN } 
-	           		onClick={this.handleItemClick} />
+	           		onClick={() => this.handleItemClick(NavMenuEnum.LOGIN)} />
 	        :
 
 	        <Menu.Menu position='right'>
 	          <Menu.Item 
 	          	name={ NavMenuEnum.NEWPOST }  
 	          	active={ activeItem ===  NavMenuEnum.NEWPOST } 
-	          	onClick={this.handleItemClick} 
+	          	onClick={() => this.handleItemClick(NavMenuEnum.NEWPOST)} 
 	          	/>
 	          
 	          <Menu.Item 
 	          	name={ NavMenuEnum.LOGOUT }  
 	          	active={ activeItem ===  NavMenuEnum.LOGIN } 
-	          	onClick={this.handleItemClick} 
+	          	onClick={() => this.handleItemClick(NavMenuEnum.LOGOUT)} 
 	          	/>
 	        </Menu.Menu>
 	        }

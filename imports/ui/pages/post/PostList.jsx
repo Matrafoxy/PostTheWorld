@@ -49,8 +49,8 @@ class PostList extends React.Component {
 	                        	<h3>{post.title}</h3>
 	                        	<p>{post.description}</p>
 	                        	
-	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.editPost.bind(this, post._id)}> Edit </Button> : '' } 
-	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.deletePost.bind(this, post._id)}> Delete </Button> : '' }
+	                        	{ Meteor.userId() === post.userId ?<Button onClick={() => this.editPost(post._id)}> Edit </Button> : '' } 
+	                        	{ Meteor.userId() === post.userId ?<Button onClick={() => this.deletePost(post._id)}> Delete </Button> : '' }
 	                        	
 	                        	
 	                        	<CommentView postId={post._id} />

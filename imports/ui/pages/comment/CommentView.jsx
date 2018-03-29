@@ -52,7 +52,6 @@ class CommentView extends React.Component {
 		});
 	}
 
-
 	onSubmit(data){
 		data.postId = this.props.postId;
 		//console.log(this.props.postId);
@@ -110,12 +109,17 @@ class CommentView extends React.Component {
 	                        		</List.Item>
 	                        		<List.Item floated='right'>
 	                        			<p>{moment(comment.createdAt).format('DD-MM-YYYY')}</p>
-	                        		</List.Item>	
+	                        		</List.Item>
+	                        	 { Meteor.userId() === comment.userId ? (
+	                        	 	<List.Item>
+	                        	 		<Button onClick={() => this.deleteComment(comment._id)}> Delete </Button>
+	                        	 	</List.Item>) 
+	                        	 	: '' }
+
 	                        	</List>
 	                        	
-	                        	{ Meteor.userId() === comment.userId ?<Button onClick={this.deleteComment.bind(this, comment._id)}> Delete </Button> : '' }
 	                        	
-                        
+                        		
                                  
                     })
                 }</div> : ''}
