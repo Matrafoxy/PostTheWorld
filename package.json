@@ -2,8 +2,14 @@
   "name": "PostTheWorld",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "lint": "eslint . --ext .jsx --fix"
   },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.jsx": "eslint --fix"
+  },
+  "pre-commit": "lint-staged",
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.36",
     "bcrypt": "^1.0.3",
@@ -21,5 +27,15 @@
     "uniforms-bootstrap4": "^1.23.1",
     "uniforms-semantic": "^1.23.1",
     "uniforms-unstyled": "^1.23.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-meteor": "^4.2.0",
+    "eslint-plugin-react": "^7.7.0",
+    "lint-staged": "^7.0.0",
+    "pre-commit": "^1.2.2"
   }
 }
