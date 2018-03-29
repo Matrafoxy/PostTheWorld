@@ -5,7 +5,7 @@ import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField'; 
+import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 
@@ -19,54 +19,54 @@ import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 
 class PostEdit extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			post: null,
-		}
-	}
+    constructor(props){
+        super(props);
+        this.state = {
+            post: null,
+        }
+    }
 	
 
-	componentDidMount(){
-		//console.log(this.props._id);
+    componentDidMount(){
+        //console.log(this.props._id);
 
-		Meteor.call('post.get', this.props._id, (err, result) => {
-			if(err)
-				console.log(err);
-			else
-				this.setState({post: result});
-		});
+        Meteor.call('post.get', this.props._id, (err, result) => {
+            if(err)
+                console.log(err);
+            else
+                this.setState({post: result});
+        });
 
-	}
-	onSubmit(data){
+    }
+    onSubmit(data){
 
-		Meteor.call('post.edit',this.props._id, data, function(err){
-			if(err)
-				console.log(err);
-			else{
-				console.log('Edit successfull');
-				route.go(NavMenuRoutes.POSTLIST);
-				}
-		});
-	}
+        Meteor.call('post.edit',this.props._id, data, function(err){
+            if(err)
+                console.log(err);
+            else{
+                console.log('Edit successfull');
+                route.go(NavMenuRoutes.POSTLIST);
+            }
+        });
+    }
 
-	render(){
+    render(){
 
-		const PostSchema = new SimpleSchema({
-				title: {
-					type: String
-				},
-				description: {
-					type: String
-				}
+        const PostSchema = new SimpleSchema({
+            title: {
+                type: String
+            },
+            description: {
+                type: String
+            }
 
-			});
+        });
 
 
-		const PostForm = () =>
-			    <AutoForm 
-			    schema={PostSchema} 
-			    onSubmit={doc => this.onSubmit(doc)} 
+        const PostForm = () =>
+			    <AutoForm
+			    schema={PostSchema}
+			    onSubmit={doc => this.onSubmit(doc)}
 			    model={this.state.post}
 			    
 			     >
@@ -87,20 +87,20 @@ class PostEdit extends React.Component {
 			    </AutoForm>
 			
 
-			return(
-				<div>
-				<PostForm />
-				</div>
-			);
+        return(
+            <div>
+                <PostForm />
+            </div>
+        );
 
-	}
+    }
 }
 
 export default PostEditContainer = withTracker( () => {
-	const handle = Meteor.subscribe('posts');
+    const handle = Meteor.subscribe('posts');
 
-	return {
-		};
+    return {
+    };
 
 
 })(PostEdit);

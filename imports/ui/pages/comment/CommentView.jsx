@@ -1,7 +1,7 @@
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField'; 
+import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 
@@ -23,85 +23,85 @@ import moment from 'moment';
 
 
 class CommentView extends React.Component {
-		constructor(props){
-			super(props);
-			this.state = {
-			comments: null
-			}
-		}
+    constructor(props){
+        super(props);
+        this.state = {
+            comments: null
+        }
+    }
 
 
-		componentDidMount(){
-			Meteor.call('comment.list', this.props.postId, (err, results) => {
-			if(err)
-				console.log('err: ' + err);
-			else
-			{
-				//console.log(results);
-				this.setState({comments: results});
-			}
-		});
-		}
+    componentDidMount(){
+        Meteor.call('comment.list', this.props.postId, (err, results) => {
+            if(err)
+                console.log('err: ' + err);
+            else
+            {
+                //console.log(results);
+                this.setState({comments: results});
+            }
+        });
+    }
 
 
-	deleteComment(_id){
-		Meteor.call('comment.remove', _id, function(err){
-			if(err)
-				console.log(err);
+    deleteComment(_id){
+        Meteor.call('comment.remove', _id, function(err){
+            if(err)
+                console.log(err);
 
-		});
-	}
+        });
+    }
 
-	onSubmit(data){
-		data.postId = this.props.postId;
-		//console.log(this.props.postId);
-		Meteor.call('comment.add', data, function(err){
-			if(err)
-				console.log(err);
-			else
-				console.log('Comment added succesffuly');
-		});
-	}
+    onSubmit(data){
+        data.postId = this.props.postId;
+        //console.log(this.props.postId);
+        Meteor.call('comment.add', data, function(err){
+            if(err)
+                console.log(err);
+            else
+                console.log('Comment added succesffuly');
+        });
+    }
 
-	render(){
+    render(){
 
 		
 
 		 const CommentSchema = new SimpleSchema({
-			text: {
-					type: String
-				}
+            text: {
+                type: String
+            }
 
-				});
+        });
 
-		const CommentForm = ({model}) =>
-			    <AutoForm 
-			    schema={CommentSchema} 
-			    onSubmit={doc => this.onSubmit(doc)} 
+        const CommentForm = ({model}) =>
+			    <AutoForm
+			    schema={CommentSchema}
+			    onSubmit={doc => this.onSubmit(doc)}
 			    model={model}
 			     >
-				<div style={{display: "block"}}>
+                <div style={{display: "block"}}>
 					 <LongTextField name="text" type="text" />
-				</div>
+                </div>
 					  
-				<div className="super-special-class">
-					<SubmitField className="super-special-class-with-suffix" value="Add Comment" />
-				</div>
+                <div className="super-special-class">
+                    <SubmitField className="super-special-class-with-suffix" value="Add Comment" />
+                </div>
 				
 			    </AutoForm>
 
-		return(
-				<div>
-					<div>
-						<CommentForm />
-					</div>
+        return(
+            <div>
+                <div>
+                    <CommentForm />
+                </div>
 
-					<div>
+                <div>
 					
-					{this.state.comments ?
-					<div>{
+                    {this.state.comments ?
+                        <div>{
 			
-                    this.state.comments.map(comment => {
+                            this.state.comments.map(comment => {
                       
 	                        return <List key={comment._id}>
 	                        		<List.Item>
@@ -113,7 +113,7 @@ class CommentView extends React.Component {
 	                        	 { Meteor.userId() === comment.userId ? (
 	                        	 	<List.Item>
 	                        	 		<Button onClick={() => this.deleteComment(comment._id)}> Delete </Button>
-	                        	 	</List.Item>) 
+	                        	 	</List.Item>)
 	                        	 	: '' }
 
 	                        	</List>
@@ -121,14 +121,14 @@ class CommentView extends React.Component {
 	                        	
                         		
                                  
-                    })
-                }</div> : ''}
-				</div>
-			</div>
+                            })
+                        }</div> : ''}
+                </div>
+            </div>
 
-			);
+        );
 			
-	}
+    }
 }
 
 

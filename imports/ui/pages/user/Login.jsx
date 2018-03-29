@@ -1,7 +1,7 @@
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField'; 
+import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 
 import React from 'react';
@@ -17,20 +17,20 @@ import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class Login extends React.Component {
 
-	onSubmit(data){
-		Meteor.loginWithPassword(data.email, data.password, function(err){
-				if(err)
-					Meteor.Error("Login error", err);
-				else{
-					console.log('Login succesfull');
-					route.go(NavMenuRoutes.HOME);
-				}
+    onSubmit(data){
+        Meteor.loginWithPassword(data.email, data.password, function(err){
+            if(err)
+                Meteor.Error("Login error", err);
+            else{
+                console.log('Login succesfull');
+                route.go(NavMenuRoutes.HOME);
+            }
 
-			});
-	}
+        });
+    }
 
-	render(){
-			const LoginForm = ({model}) =>
+    render(){
+        const LoginForm = ({model}) =>
 	    <AutoForm schema={LoginSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
 	        <h2>Login</h2>
 
@@ -42,18 +42,18 @@ class Login extends React.Component {
 	        </div>
 	    </AutoForm>
 	    return(
-			<div>
-			<LoginForm />
-			</div>
-		);
+            <div>
+                <LoginForm />
+            </div>
+        );
 
-	}
+    }
 }
 
 export default LoginContainer = withTracker( () => {
-	return {
+    return {
 
-	};
+    };
 
 
 })(Login);

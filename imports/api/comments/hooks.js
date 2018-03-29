@@ -1,5 +1,5 @@
-import Comments from './collection'
+import Comments from './collection';
 
-Comments.before.insert(function(userId, comment){
+Comments.before.insert(function(){
 	
-})
+});

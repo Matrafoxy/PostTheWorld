@@ -1,7 +1,7 @@
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField'; 
+import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 
 import React from 'react';
@@ -13,38 +13,38 @@ import { Meteor } from 'meteor/meteor';
 
 
 class Register extends React.Component {
-	constructor(props){
-		super(props);
-		this.state ={
-			registerData: {},
-		};
-	}
+    constructor(props){
+        super(props);
+        this.state ={
+            registerData: {},
+        };
+    }
 
-	onSubmit(data){
-		//this.setState({ registerData: data });
-		console.log(data);
-		Meteor.call('user.register', data);
-		//console.log(Meteor.user());
-		Meteor.loginWithPassword(data.email, data.password, function(err){
-			if(err)
-				console.log(err);
+    onSubmit(data){
+        //this.setState({ registerData: data });
+        //console.log(data);
+        Meteor.call('user.register', data);
+        //console.log(Meteor.user());
+        Meteor.loginWithPassword(data.email, data.password, function(err){
+            if(err)
+                console.log(err);
 
-		});
-		//console.log(Meteor.userId());
+        });
+        //console.log(Meteor.userId());
 
 
-	}
+    }
 
-	render(){
-		const SimpleForm = ({schema, onSubmit, model = {}}) => (
+    render(){
+        const SimpleForm = ({schema, onSubmit, model = {}}) => (
 		    <AutoForm
 		        schema={schema}
 		        onSubmit={onSubmit}
 		        model={model}
 		    />
-		);
+        );
 
-		const RegisterForm = ({model}) =>
+        const RegisterForm = ({model}) =>
 	    <AutoForm schema={RegisterSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
 	        <h2>Register</h2>
 
@@ -56,19 +56,19 @@ class Register extends React.Component {
 	            <SubmitField className="super-special-class-with-suffix" value="Register" />
 	        </div>
 	    </AutoForm>
-		return(
-			<div>
-			<RegisterForm />
-			</div>
-		);
+        return(
+            <div>
+                <RegisterForm />
+            </div>
+        );
 
-	}
+    }
 }
 
 export default RegisterContainer = withTracker( () => {
-	return {
+    return {
 
-	};
+    };
 
 
 })(Register);

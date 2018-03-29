@@ -5,7 +5,7 @@ import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField'; 
+import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 
@@ -18,31 +18,31 @@ import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class PostCreate extends React.Component {
 	
-	onSubmit(data){
-		Meteor.call('post.create', data, function(err){
-			if(err)
-				console.log(err);
-			else{
-				console.log("Post succesfull");
-				route.go(NavMenuRoutes.POSTLIST);
-				}
-		});
-	}
+    onSubmit(data){
+        Meteor.call('post.create', data, function(err){
+            if(err)
+                console.log(err);
+            else{
+                console.log("Post succesfull");
+                route.go(NavMenuRoutes.POSTLIST);
+            }
+        });
+    }
 
 
-	render(){
+    render(){
 
-			const PostSchema = new SimpleSchema({
-				title: {
-					type: String
-				},
-				description: {
-					type: String
-				}
+        const PostSchema = new SimpleSchema({
+            title: {
+                type: String
+            },
+            description: {
+                type: String
+            }
 
-			});
+        });
 
-			const PostForm = ({model}) =>
+        const PostForm = ({model}) =>
 			    <AutoForm schema={PostSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
 			        <h2>Post</h2>
 
@@ -56,18 +56,18 @@ class PostCreate extends React.Component {
 			    </AutoForm>
 			
 
-			return(
-				<div>
-				<PostForm />
-				</div>
-			);
-			}
+        return(
+            <div>
+                <PostForm />
+            </div>
+        );
+    }
 }
 
 export default PostCreateContainer = withTracker( () => {
-	return {
+    return {
 
-	};
+    };
 
 
 })(PostCreate);
