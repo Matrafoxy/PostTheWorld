@@ -15,7 +15,7 @@ import { Button, Grid } from 'semantic-ui-react'
 
 import route from '/imports/routing/router.js';
 
-import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 
 class PostEdit extends React.Component {
@@ -28,7 +28,7 @@ class PostEdit extends React.Component {
 	
 
 	componentDidMount(){
-		console.log(this.props._id);
+		//console.log(this.props._id);
 
 		Meteor.call('post.get', this.props._id, (err, result) => {
 			if(err)
@@ -45,7 +45,7 @@ class PostEdit extends React.Component {
 				console.log(err);
 			else{
 				console.log('Edit successfull');
-				route.go(NavMenuRoutes[NavMenuEnum.POSTS]);
+				route.go(NavMenuRoutes.POSTLIST);
 				}
 		});
 	}

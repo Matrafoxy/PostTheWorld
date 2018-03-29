@@ -8,7 +8,7 @@ import { Meteor } from 'meteor/meteor';
 
 import route from '/imports/routing/router.js';
 
-import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class NavBar extends React.Component{
 
@@ -23,7 +23,7 @@ class NavBar extends React.Component{
 			
 			this.setState({ activeItem: name });
 			
-			route.go(NavMenuRoutes[name]);
+			route.go(name);
 	}
 
 
@@ -34,35 +34,35 @@ class NavBar extends React.Component{
 		return(
 			<Menu inverted>
 			 <Menu.Item
-			 	 name={ NavMenuEnum.HOME } 
-			 	 active={ activeItem === NavMenuEnum.HOME } 
-			 	 onClick={() => this.handleItemClick(NavMenuEnum.HOME)} 
+			 	 name={ NavMenuRoutes.HOME } 
+			 	 active={ activeItem === NavMenuRoutes.HOME } 
+			 	 onClick={() => this.handleItemClick(NavMenuRoutes.HOME)} 
 			 	 />
 	       
 	        <Menu.Item 
-	        	name={ NavMenuEnum.POSTS } 
-	        	active={ activeItem === NavMenuEnum.POSTS } 
-	        	onClick={() => this.handleItemClick(NavMenuEnum.POSTS)} 
+	        	name={ NavMenuRoutes.POSTLIST } 
+	        	active={ activeItem === NavMenuRoutes.POSTLIST } 
+	        	onClick={() => this.handleItemClick(NavMenuRoutes.POSTLIST)} 
 	        	/>
 
 	        { !Meteor.userId() ?
 	           <Menu.Item
-	           		name={ NavMenuEnum.LOGIN } 
-	           		active={ activeItem === NavMenuEnum.LOGIN } 
-	           		onClick={() => this.handleItemClick(NavMenuEnum.LOGIN)} />
+	           		name={ NavMenuRoutes.LOGIN } 
+	           		active={ activeItem === NavMenuRoutes.LOGIN } 
+	           		onClick={() => this.handleItemClick(NavMenuRoutes.LOGIN)} />
 	        :
 
 	        <Menu.Menu position='right'>
 	          <Menu.Item 
-	          	name={ NavMenuEnum.NEWPOST }  
-	          	active={ activeItem ===  NavMenuEnum.NEWPOST } 
-	          	onClick={() => this.handleItemClick(NavMenuEnum.NEWPOST)} 
+	          	name={ NavMenuRoutes.POSTCREATE }  
+	          	active={ activeItem ===  NavMenuRoutes.POSTCREATE } 
+	          	onClick={() => this.handleItemClick(NavMenuRoutes.POSTCREATE)} 
 	          	/>
 	          
 	          <Menu.Item 
-	          	name={ NavMenuEnum.LOGOUT }  
-	          	active={ activeItem ===  NavMenuEnum.LOGIN } 
-	          	onClick={() => this.handleItemClick(NavMenuEnum.LOGOUT)} 
+	          	name={ NavMenuRoutes.LOGOUT }  
+	          	active={ activeItem ===  NavMenuRoutes.LOGIN } 
+	          	onClick={() => this.handleItemClick(NavMenuRoutes.LOGOUT)} 
 	          	/>
 	        </Menu.Menu>
 	        }

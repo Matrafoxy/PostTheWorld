@@ -12,7 +12,7 @@ import { Meteor } from 'meteor/meteor';
 
 import route from '/imports/routing/router.js';
 
-import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 
 class Login extends React.Component {
@@ -23,7 +23,7 @@ class Login extends React.Component {
 					Meteor.Error("Login error", err);
 				else{
 					console.log('Login succesfull');
-					route.go(NavMenuRoutes[NavMenuEnum.POSTS]);
+					route.go(NavMenuRoutes.HOME);
 				}
 
 			});

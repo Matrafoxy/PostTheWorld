@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 
 import route from '/imports/routing/router.js';
 
-import {NavMenuEnum, NavMenuRoutes} from '/imports/api/menu/routes';
+import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class Logout extends React.Component {
 	
@@ -16,7 +16,7 @@ class Logout extends React.Component {
     		if(err)
     			console.log(err);
     		else
-    			route.go(NavMenuRoutes[NavMenuEnum.HOME]);
+    			route.go(NavMenuRoutes.HOME);
     	});
 	}
     	render(){
