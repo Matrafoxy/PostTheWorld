@@ -17,6 +17,8 @@ import Posts from '/imports/api/posts/collection.js'
 
 import CommentView from '../comment/CommentView.jsx';
 
+import {getUserPost} from '/imports/db/queries'
+
 
 class PostList extends React.Component {
 	
@@ -34,10 +36,14 @@ class PostList extends React.Component {
 
     render(){
         const {loading, posts} = this.props;
+       
 
         if (loading) {
             return <div>Waiting for posts</div>
         }
+        //const posts = userPosts[0].posts;
+        console.log(posts);
+
 
         return(
         	 <Grid centered>
@@ -68,12 +74,16 @@ class PostList extends React.Component {
 }
 
 export default PostListContainer = withTracker( () => {
-    const handle = Meteor.subscribe('posts');
+    //const handle = Meteor.subscribe('posts');
     //console.log(Posts.find().fetch())
+    const query = getUserPost.clone({_id: Meteor.userId()});
+    const handle = query.subscribe();
+    //console.log(query.fetch())
+
 
     return {
         loading: !handle.ready(),
-        posts: Posts.find().fetch()
+        posts: query.fetch()//Posts.find().fetch()
     };
 
 

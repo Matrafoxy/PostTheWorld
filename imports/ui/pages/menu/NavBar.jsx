@@ -50,12 +50,12 @@ class NavBar extends React.Component{
 	        	<Menu.Item
 	           		name={ NavMenuRoutes.LOGIN }
 	           		active={ activeItem === NavMenuRoutes.LOGIN }
-	           		onClick={() => this.handleItemClick(NavMenuRoutes.LOGIN)} 
+	           		onClick={() => this.handleItemClick(NavMenuRoutes.LOGIN)}
 	           		/>
 	           	<Menu.Item
 	           		name={ NavMenuRoutes.REGISTER }
 	           		active={ activeItem === NavMenuRoutes.REGISTER }
-	           		onClick={() => this.handleItemClick(NavMenuRoutes.REGISTER)} 
+	           		onClick={() => this.handleItemClick(NavMenuRoutes.REGISTER)}
 	           		/>
 	        </Menu.Menu>
 	        :

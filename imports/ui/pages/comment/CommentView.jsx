@@ -32,6 +32,7 @@ class CommentView extends React.Component {
 
 
     componentDidMount(){
+        //console.log(this.props.postId);
         Meteor.call('comment.list', this.props.postId, (err, results) => {
             if(err)
                 console.log('err: ' + err);

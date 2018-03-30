@@ -10,9 +10,9 @@ Meteor.methods({
         return PostService._getPost(_id);
     },
     'post.edit'(_id, data){
-       PostService.editPost(_id, data);
+        PostService.editPost(_id, data);
     },
     'post.delete'(_id){
-       PostService.deletePost(_id);
+        PostService.deletePost(_id);
     }
 })
