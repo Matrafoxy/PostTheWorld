@@ -33,15 +33,15 @@ class CommentView extends React.Component {
 
     componentDidMount(){
         //console.log(this.props.postId);
-        Meteor.call('comment.list', this.props.postId, (err, results) => {
-            if(err)
-                console.log('err: ' + err);
-            else
-            {
-                //console.log(results);
-                this.setState({comments: results});
-            }
-        });
+        // Meteor.call('comment.list', this.props.postId, (err, results) => {
+        //     if(err)
+        //         console.log('err: ' + err);
+        //     else
+        //     {
+        //         //console.log(results);
+        //         this.setState({comments: results});
+        //     }
+        // });
     }
 
 
@@ -99,10 +99,10 @@ class CommentView extends React.Component {
 
                 <div>
 					
-                    {this.state.comments ?
+                    {this.props.comments ?
                         <div>{
 			
-                            this.state.comments.map(comment => {
+                            this.props.comments.map(comment => {
                       
 	                        return <List key={comment._id}>
 	                        		<List.Item>

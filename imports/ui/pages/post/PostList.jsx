@@ -17,7 +17,7 @@ import Posts from '/imports/api/posts/collection.js'
 
 import CommentView from '../comment/CommentView.jsx';
 
-import {getUserPost} from '/imports/db/queries'
+import {getUserPosts} from '/imports/db/queries'
 
 
 class PostList extends React.Component {
@@ -35,17 +35,22 @@ class PostList extends React.Component {
     }
 
     render(){
-        const {loading, posts} = this.props;
+        const {loading, userPosts} = this.props;
        
 
         if (loading) {
             return <div>Waiting for posts</div>
         }
-        //const posts = userPosts[0].posts;
-        console.log(posts);
+        let posts = [];
+        //console.log(userPosts);
+        if(userPosts[0])
+            posts = userPosts[0].posts ;
+        
+        
 
 
         return(
+            
         	 <Grid centered>
         	 <Grid.Column textAlign={'center'} width={10}>
                     {
@@ -59,7 +64,7 @@ class PostList extends React.Component {
 	                        	{ Meteor.userId() === post.userId ?<Button onClick={() => this.deletePost(post._id)}> Delete </Button> : '' }
 	                        	
 	                        	
-	                        	<CommentView postId={post._id} />
+	                        	<CommentView comments={post.comments} postId={post._id} />
 	                        	<Divider horizontal >.</Divider>
 	                        	
                             </List>
@@ -68,6 +73,7 @@ class PostList extends React.Component {
                     }
                 </Grid.Column>
             </Grid>
+        
         );
 
     }
@@ -76,14 +82,14 @@ class PostList extends React.Component {
 export default PostListContainer = withTracker( () => {
     //const handle = Meteor.subscribe('posts');
     //console.log(Posts.find().fetch())
-    const query = getUserPost.clone({_id: Meteor.userId()});
+    const query = getUserPosts.clone({_id: Meteor.userId()});
     const handle = query.subscribe();
     //console.log(query.fetch())
 
 
     return {
         loading: !handle.ready(),
-        posts: query.fetch()//Posts.find().fetch()
+        userPosts: query.fetch()//Posts.find().fetch()
     };
 
 
