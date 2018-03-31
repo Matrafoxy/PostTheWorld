@@ -11,11 +11,9 @@ Posts.addLinks({
 		field: 'userId'
 	},
 
-    'post_comments': {
-		type: 'many',
+    'comments': {
 		collection: Comments,
-		field: 'postId'
+		inversedBy: 'post'
 	}
 });
-
 
