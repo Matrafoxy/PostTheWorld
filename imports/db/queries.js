@@ -1,5 +1,5 @@
 // file: /imports/db/queries.js
-import getUserPost from './posts/queries/getUserPosts';
+import getUserPosts from './users/queries/getUserPosts';
 export {
-    getUserPost
+    getUserPosts
 }

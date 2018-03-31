@@ -1,5 +1,5 @@
-import {getUserPost} from '/imports/db/queries'
-getUserPost.expose({
+import {getUserPosts} from '/imports/db/queries'
+getUserPosts.expose({
     firewall(userId, params) {
      
     }
