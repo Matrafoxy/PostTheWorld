@@ -67,8 +67,7 @@ class PostEdit extends React.Component {
 			    <AutoForm
 			    schema={PostSchema}
 			    onSubmit={doc => this.onSubmit(doc)}
-			    model={this.state.post}
-			    
+			    model={this.state.post}		    
 			     >
 			        <h2>Post</h2>
 			     

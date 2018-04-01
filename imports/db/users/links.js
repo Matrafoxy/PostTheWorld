@@ -5,14 +5,14 @@ import Comments from '/imports/api/comments/collection';
 
 
 Meteor.users.addLinks({
-	'posts': {
-		collection: Posts,
+    'posts': {
+        collection: Posts,
         inversedBy: 'user'
-	},
+    },
 
-	'comments': {
-		collection: Comments,
-		inversedBy: 'user'
-	}
+    'comments': {
+        collection: Comments,
+        inversedBy: 'user'
+    }
 });
 

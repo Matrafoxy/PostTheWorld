@@ -21,11 +21,16 @@ import {getUserPosts} from '/imports/db/queries'
 
 
 class PostList extends React.Component {
+
+    constructor(props){
+        super(props);
+        //console.log(this.props.panel);
+    }
 	
-    editPost(_id){
+    editPost = (e, {_id}) => {
         route.go('/post/edit/:_id', {_id: _id});
     }
-    deletePost(_id){
+    deletePost = (e, {_id}) => {
         Meteor.call('post.delete', _id, function(err){
             if(err)
                 console.log(err);
@@ -60,8 +65,8 @@ class PostList extends React.Component {
 	                        	<h3>{post.title}</h3>
 	                        	<p>{post.description}</p>
 	                        	
-	                        	{ Meteor.userId() === post.userId ?<Button onClick={() => this.editPost(post._id)}> Edit </Button> : '' }
-	                        	{ Meteor.userId() === post.userId ?<Button onClick={() => this.deletePost(post._id)}> Delete </Button> : '' }
+	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.editPost} _id={post._id} > Edit </Button> : '' }
+	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.deletePost} _id={post._id} > Delete </Button> : '' }
 	                        	
 	                        	
 	                        	<CommentView comments={post.comments} postId={post._id} />
@@ -84,7 +89,7 @@ export default PostListContainer = withTracker( () => {
     //console.log(Posts.find().fetch())
     const query = getUserPosts.clone({_id: Meteor.userId()});
     const handle = query.subscribe();
-    //console.log(query.fetch())
+    //console.log(this.props);
 
 
     return {

@@ -9,7 +9,7 @@ export default ({main, routeProps}) => {
     // where we do createElement, that's where your components will get rendered.
     return (
         <div id="app">
-        	<NavBar />
+            <NavBar />
             {React.createElement(main, routeProps)}
         </div>
     )

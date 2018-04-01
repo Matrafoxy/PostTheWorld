@@ -8,7 +8,7 @@ import PostList from '/imports/ui/pages/post/PostList';
 import PostEdit from '/imports/ui/pages/post/PostEdit';
 import Logout from  '/imports/ui/pages/user/Logout';
 
-route('/', PostList, {}, {
+route('/', PostList, {panel: 'home'}, {
     name: 'home'
 });
 route('/register', Register, {}, {
@@ -20,7 +20,7 @@ route('/login', Login, {}, {
 route('/post', PostCreate, {}, {
     name: 'post_create'
 });
-route('/post/list', PostList, {}, {
+route('/post/list', PostList, {panel: 'user_posts'}, {
     name: 'post_list'
 });
 route('/post/edit/:_id', PostEdit, {}, {

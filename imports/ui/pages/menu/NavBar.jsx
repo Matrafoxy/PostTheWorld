@@ -19,7 +19,7 @@ class NavBar extends React.Component{
         }
     }
 	
-    handleItemClick(name){
+    handleItemClick = (e, {name}) => {
 			
         this.setState({ activeItem: name });
 			
@@ -36,13 +36,13 @@ class NavBar extends React.Component{
 			 <Menu.Item
 			 	 name={ NavMenuRoutes.HOME }
 			 	 active={ activeItem === NavMenuRoutes.HOME }
-			 	 onClick={() => this.handleItemClick(NavMenuRoutes.HOME)}
+			 	 onClick={this.handleItemClick}
 			 	 />
 	       
 	        <Menu.Item
 	        	name={ NavMenuRoutes.POSTLIST }
 	        	active={ activeItem === NavMenuRoutes.POSTLIST }
-	        	onClick={() => this.handleItemClick(NavMenuRoutes.POSTLIST)}
+	        	onClick={this.handleItemClick}
 	        	/>
 
 	        { !Meteor.userId() ?
@@ -50,12 +50,12 @@ class NavBar extends React.Component{
 	        	<Menu.Item
 	           		name={ NavMenuRoutes.LOGIN }
 	           		active={ activeItem === NavMenuRoutes.LOGIN }
-	           		onClick={() => this.handleItemClick(NavMenuRoutes.LOGIN)}
+	           		onClick={this.handleItemClick}
 	           		/>
 	           	<Menu.Item
 	           		name={ NavMenuRoutes.REGISTER }
 	           		active={ activeItem === NavMenuRoutes.REGISTER }
-	           		onClick={() => this.handleItemClick(NavMenuRoutes.REGISTER)}
+	           		onClick={this.handleItemClick}
 	           		/>
 	        </Menu.Menu>
 	        :
@@ -64,13 +64,13 @@ class NavBar extends React.Component{
 	          <Menu.Item
 	          	name={ NavMenuRoutes.POSTCREATE }
 	          	active={ activeItem ===  NavMenuRoutes.POSTCREATE }
-	          	onClick={() => this.handleItemClick(NavMenuRoutes.POSTCREATE)}
+	          	onClick={this.handleItemClick}
 	          	/>
 	          
 	          <Menu.Item
 	          	name={ NavMenuRoutes.LOGOUT }
 	          	active={ activeItem ===  NavMenuRoutes.LOGIN }
-	          	onClick={() => this.handleItemClick(NavMenuRoutes.LOGOUT)}
+	          	onClick={this.handleItemClick}
 	          	/>
 	        </Menu.Menu>
 	        }

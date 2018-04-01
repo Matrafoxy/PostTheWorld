@@ -39,13 +39,17 @@ class Register extends React.Component {
         const SimpleForm = ({schema, onSubmit, model = {}}) => (
 		    <AutoForm
 		        schema={schema}
-		        onSubmit={onSubmit}
+		        onSubmit={doc => this.onSubmit(doc)}
 		        model={model}
 		    />
         );
 
         const RegisterForm = ({model}) =>
-	    <AutoForm schema={RegisterSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
+	    <AutoForm 
+        schema={RegisterSchema} 
+        onSubmit={doc => this.onSubmit(doc)} 
+        model={model}
+        >
 	        <h2>Register</h2>
 
 	        <TextField name="email" type="email" label="Email" />

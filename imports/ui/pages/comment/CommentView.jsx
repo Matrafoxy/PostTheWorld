@@ -1,21 +1,12 @@
-import { withTracker } from 'meteor/react-meteor-data';
-
 import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 
 
 import React from 'react';
-import { Button, Grid, List, Segment, Divider } from 'semantic-ui-react'
-
-import { Link } from 'react-router-dom';
+import { Button, List } from 'semantic-ui-react'
 
 import { Meteor } from 'meteor/meteor';
-
-import route from '/imports/routing/router.js';
-
-import Comments from '/imports/api/comments/collection.js'
 
 import SimpleSchema from 'simpl-schema';
 
@@ -45,7 +36,7 @@ class CommentView extends React.Component {
     }
 
 
-    deleteComment(_id){
+    deleteComment = (e, {_id}) => {
         Meteor.call('comment.remove', _id, function(err){
             if(err)
                 console.log(err);
@@ -66,13 +57,10 @@ class CommentView extends React.Component {
 
     render(){
 
-		
-
 		 const CommentSchema = new SimpleSchema({
             text: {
                 type: String
             }
-
         });
 
         const CommentForm = ({model}) =>
@@ -113,7 +101,7 @@ class CommentView extends React.Component {
 	                        		</List.Item>
 	                        	 { Meteor.userId() === comment.userId ? (
 	                        	 	<List.Item>
-	                        	 		<Button onClick={() => this.deleteComment(comment._id)}> Delete </Button>
+	                        	 		<Button onClick={this.deleteComment} _id={comment._id} > Delete </Button>
 	                        	 	</List.Item>)
 	                        	 	: '' }
 
