@@ -1,2 +1,2 @@
 // file: /imports/api/exposures.js
-import './posts/queries/getUserPosts.expose.js';
+import './user/queries/getUserPosts.expose.js';
