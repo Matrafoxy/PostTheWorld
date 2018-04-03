@@ -20,7 +20,7 @@ class Register extends React.Component {
         };
     }
 
-    onSubmit(data){
+    onSubmit = (data) => {
         Meteor.call('user.register', data);
 
         Meteor.loginWithPassword(data.email, data.password, function(err){
@@ -37,7 +37,7 @@ class Register extends React.Component {
         const RegisterForm = ({model}) =>
             <AutoForm
                 schema={RegisterSchema}
-                onSubmit={doc => this.onSubmit(doc)}
+                onSubmit={this.onSubmit}
                 model={model}
             >
                 <h2>Register</h2>

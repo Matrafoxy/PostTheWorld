@@ -18,7 +18,7 @@ import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class PostCreate extends React.Component {
 	
-    onSubmit(data){
+    onSubmit = (data) => {
         Meteor.call('post.create', data, function(err){
             if(err)
                 console.log(err);
@@ -44,7 +44,7 @@ class PostCreate extends React.Component {
 
         const PostForm = ({model}) =>
             <AutoForm schema={PostSchema}
-                onSubmit={doc => this.onSubmit(doc)}
+                onSubmit={this.onSubmit}
                 model={model}>
                 <h2>Post</h2>
 

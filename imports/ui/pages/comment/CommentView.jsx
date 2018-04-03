@@ -29,7 +29,7 @@ class CommentView extends React.Component {
         });
     }
 
-    onSubmit(data){
+    onSubmit = (data) => {
         data.postId = this.props.postId;
         Meteor.call('comment.add', data, function(err){
             if(err)
@@ -44,13 +44,14 @@ class CommentView extends React.Component {
         const CommentSchema = new SimpleSchema({
             text: {
                 type: String
-            }
+            },
+           
         });
 
         const CommentForm = ({model}) =>
             <AutoForm
                 schema={CommentSchema}
-                onSubmit={doc => this.onSubmit(doc)}
+                onSubmit={this.onSubmit}
                 model={model}
             >
                 <div style={{display: "block"}}>

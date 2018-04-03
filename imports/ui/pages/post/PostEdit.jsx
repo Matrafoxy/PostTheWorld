@@ -34,7 +34,7 @@ class PostEdit extends React.Component {
         });
 
     }
-    onSubmit(data){
+    onSubmit = (data) => {
 
         Meteor.call('post.edit',this.props._id, data, function(err){
             if(err)
@@ -62,7 +62,7 @@ class PostEdit extends React.Component {
         const PostForm = () =>
             <AutoForm
                 schema={PostSchema}
-                onSubmit={doc => this.onSubmit(doc)}
+                onSubmit={this.onSubmit}
                 model={this.state.post}
             >
                 <h2>Post</h2>
