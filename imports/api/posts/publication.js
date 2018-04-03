@@ -4,5 +4,5 @@ import Posts from '/imports/api/posts/collection';
 
 
 Meteor.publish('posts', function () {
-    return Posts.find({}, {sort: {createdAt: -1}}); 
+    return Posts.find({}, {sort: {createdAt: -1}});
 })

@@ -20,14 +20,18 @@ class CommentView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            comments: null
+            message: null
         }
     }
 
+    showMessage(message){
+        alert(message);
+    }
+
     deleteComment = (e, {_id}) => {
-        Meteor.call('comment.remove', _id, function(err){
+        Meteor.call('comment.remove', _id, (err) => {
             if(err)
-                console.log(err);
+                this.showMessage(err.message);
 
         });
     }
@@ -36,9 +40,9 @@ class CommentView extends React.Component {
         data.postId = this.props.postId;
         Meteor.call('comment.add', data, function(err){
             if(err)
-                console.log(err);
+                this.showMessage(err.message);
             else
-                console.log('Comment added succesffuly');
+                this.showMessage('Comment added succesffuly');
         });
     }
 
@@ -69,6 +73,7 @@ class CommentView extends React.Component {
 
         return(
             <div>
+
                 <div>
                     <CommentForm />
                 </div>

@@ -20,6 +20,10 @@ class PostService {
 
     static editPost(_id, data){
         let post = this._getPost(_id);
+
+        if(!post)
+            throw new Meteor.Error(500, 'Edit error', "This post doesn't exist");
+
         if(post.userId !== Meteor.userId())
             throw new Meteor.Error(500, 'Edit error', "You're not authorized to edit this post");
 

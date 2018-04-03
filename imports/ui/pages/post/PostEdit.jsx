@@ -23,14 +23,17 @@ class PostEdit extends React.Component {
         super(props);
         this.state = {
             post: null,
+            message: null
         }
     }
-    
+    showMessage(message){
+        alert(message);
+    }
 
     componentDidMount(){
         Meteor.call('post.get', this.props._id, (err, result) => {
             if(err)
-                console.log(err);
+                this.showMessage(err.message);
             else
                 this.setState({post: result});
         });
@@ -38,11 +41,13 @@ class PostEdit extends React.Component {
     }
     onSubmit = (data) => {
 
-        Meteor.call('post.edit',this.props._id, data, function(err){
+        Meteor.call('post.edit',this.props._id, data, (err) => {
             if(err)
-                console.log(err);
+            {
+                this.showMessage(err.message);
+            }
             else{
-                console.log('Edit successfull');
+                this.showMessage('Edit successfull');
                 route.go(NavMenuRoutes.POSTLIST);
             }
         });
@@ -69,6 +74,7 @@ class PostEdit extends React.Component {
             >
                 <h2>Post</h2>
         
+                
                 <div>
                     <TextField name="title" type="text" />
                 </div>

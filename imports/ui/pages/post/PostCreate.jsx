@@ -17,13 +17,24 @@ import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 
 class PostCreate extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            message: null
+        }
+    }
 	
+    showMessage(message){
+        alert(message);
+    }
+
     onSubmit = (data) => {
-        Meteor.call('post.create', data, function(err){
+        Meteor.call('post.create', data, (err) => {
             if(err)
-                console.log(err);
+                this.showMessage(err.message);
             else{
-                console.log("Post succesfull");
+                this.showMessage("Post succesfull");
                 route.go(NavMenuRoutes.POSTLIST);
             }
         });

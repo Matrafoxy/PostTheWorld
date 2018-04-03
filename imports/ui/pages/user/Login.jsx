@@ -17,12 +17,16 @@ import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class Login extends React.Component {
 
+    showMessage(message){
+        alert(message);
+    }
+
     onSubmit = (data) => {
-        Meteor.loginWithPassword(data.email, data.password, function(err){
+        Meteor.loginWithPassword(data.email, data.password, (err) => {
             if(err)
-                Meteor.Error("Login error", err);
+                this.showMessage(err.message);
             else{
-                console.log('Login succesfull');
+                this.showMessage('Login succesfull');
                 route.go(NavMenuRoutes.HOME);
             }
 

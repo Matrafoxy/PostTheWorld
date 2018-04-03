@@ -19,18 +19,25 @@ class PostList extends React.Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            message: null
+        }
 
+    }
+
+    showMessage(message){
+        alert(message);
     }
 	
     editPost = (e, {_id}) => {
         route.go('/post/edit/:_id', {_id: _id});
     }
     deletePost = (e, {_id}) => {
-        Meteor.call('post.delete', _id, function(err){
+        Meteor.call('post.delete', _id, (err) => {
             if(err)
-                console.log(err);
+                this.showMessage(err.message);//this.setState({message: err.message});//console.log(err);
             else
-                console.log('Delete successfull')
+                this.showMessage('Delete successfull');//console.log('Delete successfull')
         });
     }
 

@@ -7,14 +7,20 @@ import route from '/imports/routing/router.js';
 import {NavMenuRoutes} from '/imports/api/menu/routes';
 
 class Logout extends React.Component {
+
+
+    showMessage(message){
+        alert(message);
+    }
 	
     componentDidMount(){
 
-        Meteor.logout(function(err){
+        Meteor.logout( (err) => {
             if(err)
-                console.log(err);
-            else
+                this.showMessage(err.message);
+            else{
                 route.go(NavMenuRoutes.HOME);
+            }
         });
     }
     render(){
