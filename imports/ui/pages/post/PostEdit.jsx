@@ -99,10 +99,12 @@ PostEdit.propTypes = {
 }
 
 
-export default PostEditContainer = withTracker( () => {
+const PostEditContainer = withTracker( () => {
 
     return {
     };
 
 
 })(PostEdit);
+
+export default PostEditContainer;

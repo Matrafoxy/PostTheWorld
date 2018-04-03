@@ -66,8 +66,10 @@ class PostCreate extends React.Component {
     }
 }
 
-export default PostCreateContainer = withTracker( () => {
+const PostCreateContainer = withTracker( () => {
     return {
 
     };
 })(PostCreate);
+
+export default PostCreateContainer;

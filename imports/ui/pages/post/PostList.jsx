@@ -80,7 +80,7 @@ PostList.propTypes = {
     userPosts: PropTypes.array
 }
 
-export default PostListContainer = withTracker( () => {
+const PostListContainer = withTracker( () => {
 
     const query = getUserPosts.clone({_id: Meteor.userId()});
     const handle = query.subscribe();
@@ -92,3 +92,5 @@ export default PostListContainer = withTracker( () => {
 
 
 })(PostList);
+
+export default PostListContainer;

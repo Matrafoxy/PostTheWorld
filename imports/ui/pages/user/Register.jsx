@@ -59,10 +59,12 @@ class Register extends React.Component {
     }
 }
 
-export default RegisterContainer = withTracker( () => {
+const RegisterContainer = withTracker( () => {
     return {
 
     };
 
 
 })(Register);
+
+export default RegisterContainer;

@@ -52,10 +52,12 @@ class Login extends React.Component {
     }
 }
 
-export default LoginContainer = withTracker( () => {
+const LoginContainer = withTracker( () => {
     return {
 
     };
 
 
 })(Login);
+
+export default LoginContainer;
