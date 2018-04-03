@@ -7,7 +7,6 @@ Meteor.methods({
     'comment.list'(postId){
 
         let comments = CommentService._getComments(postId);
-        //console.log(comments);
         return comments;
     },
 	

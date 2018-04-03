@@ -9,15 +9,6 @@ const NavMenuRoutes  = {
     LOGOUT: 'logout'
 }
 
-// const NavMenuRoutes = {
-// 	[NavMenuEnum.HOME]: '/',
-// 	[NavMenuEnum.POSTS]: '/post/list',
-// 	[NavMenuEnum.NEWPOST]: '/post',
-// 	[NavMenuEnum.LOGIN]: '/login',
-// 	[NavMenuEnum.LOGOUT]: '/logout'
-
-//}
-
 export {
     NavMenuRoutes
 }

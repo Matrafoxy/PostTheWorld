@@ -39,7 +39,6 @@ class PostList extends React.Component {
             return <div>Waiting for posts</div>
         }
         let posts = [];
-        //console.log(userPosts);
         if(userPosts[0])
             posts = userPosts[0].posts ;
         

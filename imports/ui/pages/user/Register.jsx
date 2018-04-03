@@ -21,16 +21,14 @@ class Register extends React.Component {
     }
 
     onSubmit(data){
-        //this.setState({ registerData: data });
-        //console.log(data);
         Meteor.call('user.register', data);
-        //console.log(Meteor.user());
+
         Meteor.loginWithPassword(data.email, data.password, function(err){
             if(err)
                 console.log(err);
 
         });
-        //console.log(Meteor.userId());
+
 
 
     }
