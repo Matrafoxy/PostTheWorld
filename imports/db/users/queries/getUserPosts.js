@@ -1,12 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
-import Posts from '/imports/api/posts/collection';
-
-import Comments from '/imports/api/comments/collection';
-
-
 export default Meteor.users.createQuery('getUserPosts', {
-    $filter({filters, options, params}) {
+    $filter({filters, params}) {
         filters._id = params._id;
     },
     $options: {sort: {createdAt: -1}},

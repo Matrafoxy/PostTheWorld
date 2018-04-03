@@ -7,8 +7,6 @@ class CommentService {
 
     static _getComments(postId){
         let comments =  Comments.find({postId}).fetch();
-        console.log(comments);
-
         return comments;
     }
 
