@@ -1,3 +1,4 @@
+//file: \imports\api\posts
 import Posts from './colection';
 
 Posts.before.insert(function(userId, post){

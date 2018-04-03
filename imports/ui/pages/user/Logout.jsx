@@ -1,5 +1,3 @@
-import { withTracker } from 'meteor/react-meteor-data';
-
 import React from 'react';
 
 import { Meteor } from 'meteor/meteor';
@@ -12,21 +10,21 @@ class Logout extends React.Component {
 	
     componentDidMount(){
 
-    	Meteor.logout(function(err){
-    		if(err)
-    			console.log(err);
-    		else
-    			route.go(NavMenuRoutes.HOME);
-    	});
+        Meteor.logout(function(err){
+            if(err)
+                console.log(err);
+            else
+                route.go(NavMenuRoutes.HOME);
+        });
     }
-    	render(){
+    render(){
 
-    		return(
-    			<h1 >
-        			Logging out...
-      			</h1>
-    			)
-    	}
+        return(
+            <h1 >
+            Logging out...
+            </h1>
+        )
+    }
 }
 
 

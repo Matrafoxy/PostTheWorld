@@ -11,8 +11,6 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 
 import SimpleSchema from 'simpl-schema';
 
-import { Button, Grid } from 'semantic-ui-react'
-
 import route from '/imports/routing/router.js';
 
 import {NavMenuRoutes} from '/imports/api/menu/routes';
@@ -25,11 +23,9 @@ class PostEdit extends React.Component {
             post: null,
         }
     }
-	
+    
 
     componentDidMount(){
-        //console.log(this.props._id);
-
         Meteor.call('post.get', this.props._id, (err, result) => {
             if(err)
                 console.log(err);
@@ -64,27 +60,27 @@ class PostEdit extends React.Component {
 
 
         const PostForm = () =>
-			    <AutoForm
-			    schema={PostSchema}
-			    onSubmit={doc => this.onSubmit(doc)}
-			    model={this.state.post}		    
-			     >
-			        <h2>Post</h2>
-			     
-				        <div>
-				        	<TextField name="title" type="text" />
-				      	</div>
+            <AutoForm
+                schema={PostSchema}
+                onSubmit={doc => this.onSubmit(doc)}
+                model={this.state.post}
+            >
+                <h2>Post</h2>
+        
+                <div>
+                    <TextField name="title" type="text" />
+                </div>
 
-					    <div style={{display: "block"}}>
-					        <LongTextField name="description" type="text" />
-					    </div>
-					  
-					        <div className="super-special-class">
-					            <SubmitField className="super-special-class-with-suffix" value="Save" />
-					        </div>
-				
-			    </AutoForm>
-			
+                <div style={{display: "block"}}>
+                    <LongTextField name="description" type="text" />
+                </div>
+        
+                <div className="super-special-class">
+                    <SubmitField className="super-special-class-with-suffix" value="Save" />
+                </div>
+        
+            </AutoForm>
+        
 
         return(
             <div>

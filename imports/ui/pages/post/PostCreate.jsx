@@ -43,17 +43,19 @@ class PostCreate extends React.Component {
         });
 
         const PostForm = ({model}) =>
-			    <AutoForm schema={PostSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
-			        <h2>Post</h2>
+            <AutoForm schema={PostSchema}
+                onSubmit={doc => this.onSubmit(doc)}
+                model={model}>
+                <h2>Post</h2>
 
-			        <TextField name="title" type="text" label="Title" />
-			        <div style={{display: "block"}}>
-			        <LongTextField name="description" type="text" label="Description" />
-			        </div>
-			        <div className="super-special-class">
-			            <SubmitField className="super-special-class-with-suffix" value="Post" />
-			        </div>
-			    </AutoForm>
+                <TextField name="title" type="text" label="Title" />
+                <div style={{display: "block"}}>
+                    <LongTextField name="description" type="text" label="Description" />
+                </div>
+                <div className="super-special-class">
+                    <SubmitField className="super-special-class-with-suffix" value="Post" />
+                </div>
+            </AutoForm>
 			
 
         return(
@@ -68,6 +70,4 @@ export default PostCreateContainer = withTracker( () => {
     return {
 
     };
-
-
 })(PostCreate);

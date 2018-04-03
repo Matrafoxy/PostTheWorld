@@ -36,30 +36,22 @@ class Register extends React.Component {
     }
 
     render(){
-        const SimpleForm = ({schema, onSubmit, model = {}}) => (
-		    <AutoForm
-		        schema={schema}
-		        onSubmit={doc => this.onSubmit(doc)}
-		        model={model}
-		    />
-        );
-
         const RegisterForm = ({model}) =>
-	    <AutoForm 
-        schema={RegisterSchema} 
-        onSubmit={doc => this.onSubmit(doc)} 
-        model={model}
-        >
-	        <h2>Register</h2>
+            <AutoForm
+                schema={RegisterSchema}
+                onSubmit={doc => this.onSubmit(doc)}
+                model={model}
+            >
+                <h2>Register</h2>
 
-	        <TextField name="email" type="email" label="Email" />
-	        <TextField name="password" type="password" label="Password" />
-	        <TextField name="confirmPassword" type="password" label="Confirm" />
+                <TextField name="email" type="email" label="Email" />
+                <TextField name="password" type="password" label="Password" />
+                <TextField name="confirmPassword" type="password" label="Confirm" />
 
-	        <div className="super-special-class">
-	            <SubmitField className="super-special-class-with-suffix" value="Register" />
-	        </div>
-	    </AutoForm>
+                <div className="super-special-class">
+                    <SubmitField className="super-special-class-with-suffix" value="Register" />
+                </div>
+            </AutoForm>
         return(
             <div>
                 <RegisterForm />

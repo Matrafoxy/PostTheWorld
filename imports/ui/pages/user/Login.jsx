@@ -31,17 +31,17 @@ class Login extends React.Component {
 
     render(){
         const LoginForm = ({model}) =>
-	    <AutoForm schema={LoginSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
-	        <h2>Login</h2>
+            <AutoForm schema={LoginSchema} onSubmit={doc => this.onSubmit(doc)} model={model}>
+                <h2>Login</h2>
 
-	        <TextField name="email" type="email" label="Email" />
-	        <TextField name="password" type="password" label="Password" />
+                <TextField name="email" type="email" label="Email" />
+                <TextField name="password" type="password" label="Password" />
 
-	        <div className="super-special-class">
-	            <SubmitField className="super-special-class-with-suffix" value="Login" />
-	        </div>
-	    </AutoForm>
-	    return(
+                <div className="super-special-class">
+                    <SubmitField className="super-special-class-with-suffix" value="Login" />
+                </div>
+            </AutoForm>
+        return(
             <div>
                 <LoginForm />
             </div>

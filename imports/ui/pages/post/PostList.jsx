@@ -1,19 +1,11 @@
 import { withTracker } from 'meteor/react-meteor-data';
 
-import AutoForm from 'uniforms-semantic/AutoForm';
-import TextField from 'uniforms-semantic/TextField';
-import SubmitField from 'uniforms-semantic/SubmitField';
-
 import React from 'react';
-import { Button, Grid, Container, Segment, Divider,List } from 'semantic-ui-react'
-
-import { Link } from 'react-router-dom';
+import { Button, Grid, Divider,List } from 'semantic-ui-react'
 
 import { Meteor } from 'meteor/meteor';
 
 import route from '/imports/routing/router.js';
-
-import Posts from '/imports/api/posts/collection.js'
 
 import CommentView from '../comment/CommentView.jsx';
 
@@ -24,7 +16,7 @@ class PostList extends React.Component {
 
     constructor(props){
         super(props);
-        //console.log(this.props.panel);
+
     }
 	
     editPost = (e, {_id}) => {
@@ -56,25 +48,22 @@ class PostList extends React.Component {
 
         return(
             
-        	 <Grid centered>
-        	 <Grid.Column textAlign={'center'} width={10}>
+            <Grid centered>
+                <Grid.Column textAlign={'center'} width={10}>
                     {
                         posts.map(post => {
                       
-	                        return <List key={post._id} >
-	                        	<h3>{post.title}</h3>
-	                        	<p>{post.description}</p>
-	                        	
-	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.editPost} _id={post._id} > Edit </Button> : '' }
-	                        	{ Meteor.userId() === post.userId ?<Button onClick={this.deletePost} _id={post._id} > Delete </Button> : '' }
-	                        	
-	                        	
-	                        	<CommentView comments={post.comments} postId={post._id} />
-	                        	<Divider horizontal >.</Divider>
-	                        	
+                            return <List key={post._id} >
+                                <h3>{post.title}</h3>
+                                <p>{post.description}</p>
+                                
+                                { Meteor.userId() === post.userId ?<Button onClick={this.editPost} _id={post._id} > Edit </Button> : '' }
+                                { Meteor.userId() === post.userId ?<Button onClick={this.deletePost} _id={post._id} > Delete </Button> : '' }
+
+                                <CommentView comments={post.comments} postId={post._id} />
+                                <Divider horizontal >.</Divider>
                             </List>
                         })
-
                     }
                 </Grid.Column>
             </Grid>
@@ -85,16 +74,13 @@ class PostList extends React.Component {
 }
 
 export default PostListContainer = withTracker( () => {
-    //const handle = Meteor.subscribe('posts');
-    //console.log(Posts.find().fetch())
+
     const query = getUserPosts.clone({_id: Meteor.userId()});
     const handle = query.subscribe();
-    //console.log(this.props);
-
 
     return {
         loading: !handle.ready(),
-        userPosts: query.fetch()//Posts.find().fetch()
+        userPosts: query.fetch()
     };
 
 

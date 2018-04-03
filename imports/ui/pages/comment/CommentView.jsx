@@ -21,21 +21,6 @@ class CommentView extends React.Component {
         }
     }
 
-
-    componentDidMount(){
-        //console.log(this.props.postId);
-        // Meteor.call('comment.list', this.props.postId, (err, results) => {
-        //     if(err)
-        //         console.log('err: ' + err);
-        //     else
-        //     {
-        //         //console.log(results);
-        //         this.setState({comments: results});
-        //     }
-        // });
-    }
-
-
     deleteComment = (e, {_id}) => {
         Meteor.call('comment.remove', _id, function(err){
             if(err)
@@ -46,7 +31,6 @@ class CommentView extends React.Component {
 
     onSubmit(data){
         data.postId = this.props.postId;
-        //console.log(this.props.postId);
         Meteor.call('comment.add', data, function(err){
             if(err)
                 console.log(err);
@@ -57,27 +41,27 @@ class CommentView extends React.Component {
 
     render(){
 
-		 const CommentSchema = new SimpleSchema({
+        const CommentSchema = new SimpleSchema({
             text: {
                 type: String
             }
         });
 
         const CommentForm = ({model}) =>
-			    <AutoForm
-			    schema={CommentSchema}
-			    onSubmit={doc => this.onSubmit(doc)}
-			    model={model}
-			     >
+            <AutoForm
+                schema={CommentSchema}
+                onSubmit={doc => this.onSubmit(doc)}
+                model={model}
+            >
                 <div style={{display: "block"}}>
-					 <LongTextField name="text" type="text" />
+                    <LongTextField name="text" type="text" />
                 </div>
-					  
+  
                 <div className="super-special-class">
                     <SubmitField className="super-special-class-with-suffix" value="Add Comment" />
                 </div>
 				
-			    </AutoForm>
+            </AutoForm>
 
         return(
             <div>
@@ -92,24 +76,19 @@ class CommentView extends React.Component {
 			
                             this.props.comments.map(comment => {
                       
-	                        return <List key={comment._id}>
-	                        		<List.Item>
-	                        			<p>{comment.text}</p>
-	                        		</List.Item>
-	                        		<List.Item floated='right'>
-	                        			<p>{moment(comment.createdAt).format('DD-MM-YYYY')}</p>
-	                        		</List.Item>
-	                        	 { Meteor.userId() === comment.userId ? (
-	                        	 	<List.Item>
-	                        	 		<Button onClick={this.deleteComment} _id={comment._id} > Delete </Button>
-	                        	 	</List.Item>)
-	                        	 	: '' }
-
-	                        	</List>
-	                        	
-	                        	
-                        		
-                                 
+                                return <List key={comment._id}>
+                                    <List.Item>
+                                        <p>{comment.text}</p>
+                                    </List.Item>
+                                    <List.Item floated='right'>
+                                        <p>{moment(comment.createdAt).format('DD-MM-YYYY')}</p>
+                                    </List.Item>
+                                    { Meteor.userId() === comment.userId ? (
+                                        <List.Item>
+                                            <Button onClick={this.deleteComment} _id={comment._id} > Delete </Button>
+                                        </List.Item>)
+                                        : '' }
+                                </List>
                             })
                         }</div> : ''}
                 </div>
