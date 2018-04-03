@@ -4,6 +4,9 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 
 
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import { Button, List } from 'semantic-ui-react'
 
 import { Meteor } from 'meteor/meteor';
@@ -98,6 +101,12 @@ class CommentView extends React.Component {
         );
 			
     }
+}
+
+CommentView.propTypes = {
+    postId: PropTypes.string,
+    comments: PropTypes.array,
+    'comments.map': PropTypes.func,
 }
 
 

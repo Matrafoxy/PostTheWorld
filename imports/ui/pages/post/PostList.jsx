@@ -1,6 +1,9 @@
 import { withTracker } from 'meteor/react-meteor-data';
 
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import { Button, Grid, Divider,List } from 'semantic-ui-react'
 
 import { Meteor } from 'meteor/meteor';
@@ -70,6 +73,11 @@ class PostList extends React.Component {
         );
 
     }
+}
+
+PostList.propTypes = {
+    loading: PropTypes.bool,
+    userPosts: PropTypes.array
 }
 
 export default PostListContainer = withTracker( () => {

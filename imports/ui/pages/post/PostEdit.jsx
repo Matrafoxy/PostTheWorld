@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { withTracker } from 'meteor/react-meteor-data';
 
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -91,8 +93,13 @@ class PostEdit extends React.Component {
     }
 }
 
+PostEdit.propTypes = {
+    _id: PropTypes.string,
+
+}
+
+
 export default PostEditContainer = withTracker( () => {
-    const handle = Meteor.subscribe('posts');
 
     return {
     };
